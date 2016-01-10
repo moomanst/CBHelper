@@ -256,15 +256,6 @@ disable_ssh_root_login()
     echo "Disabled SSH root login"
 }
 
-find_media_files_in_dir()
-{
-    mediaroot="/home/"
-    mimes="image/\|video/\|audio/\|model/\|music/"
-    pushd $mediaroot > /dev/null
-    find -type f -print0 | xargs -0 file --mime-type | grep $mimes | less -P "le Media Files"
-    popd > /dev/null
-}
-
 preserve_root_uid()
 {
     if [[ $(grep root /etc/passwd | wc -l) -gt 1 ]]; then
@@ -369,9 +360,6 @@ disable_root_account
 
 echo "$(tput setaf 2)Removing common hacking tools$(tput sgr0)"
 remove_hacking_tools
-
-echo "$(tput setaf 2)Finding media files and moving them to /dev/null/$(tput sgr0)"
-find_media_files_in_dir
 
 echo "$(tput setaf 2)Starting firewall and installing GUI$(tput sgr0)"
 sudo ufw enable
