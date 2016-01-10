@@ -242,7 +242,8 @@ sudo apt-get update
 echo "$(tput setaf 2)Installing Libre Office$(tput sgr0)"
 sudo apt-get install libreoffice
 
-echo "$(tput setaf 2)Updates are done!\nTime to do password policy$(tput sgr0)"
+echo "$(tput setaf 2)Updates are done!$(tput sgr0)"
+echo "$(tput setaf 2)Time to do password policy$(tput sgr0)"
 edit_passwd_policy
 echo "$(tput setaf 2)Done with password policy!$(tput sgr0)"
 write_page > AfterRunning.html
