@@ -79,7 +79,7 @@ function installFirefox
     & $out
 }
 
-function installMalwarebyts
+function installMalwarebytes
 {
     Write-host 'Installing Malwarebytes'
     $down = New-Object System.Net.WebClient
@@ -90,7 +90,7 @@ function installMalwarebyts
     c:\Program Files\malwaresetup.exe /install=agent /silent /suppressmsgboxes
 }
 
-function installMalwarebytsAntiRootkit
+function installMalwarebytesAntiRootkit
 {
     Write-host 'Installing Malwarebytes Anti-Rootkit'
     $down = New-Object System.Net.WebClient
@@ -104,7 +104,7 @@ function installMalwarebytsAntiRootkit
 function findMedia
 {
     Write-host 'Attempting to find media'
-    $items = Get-ChildItem -Path C:\Users\wgssa -Include *.mp3, *.mp4, *.wma, *.mov, *.wmv, *.wav -Recurse
+    $items = Get-ChildItem -Path C:\Users\ -Include *.mp3, *.mp4, *.wma, *.mov, *.wmv, *.wav -Recurse
         Write-host "$items"
 }
 
@@ -116,5 +116,5 @@ setLocalSecurityPolicies
 setupAuditing
 installFirefox
 installMalwarebytes
-installMalwarebytsAntiRootkit
+installMalwarebytesAntiRootkit
 findMedia
