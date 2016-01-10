@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#Pretty simple shell script to do much of the basic CyberPatriot Ubuntu tasks.
-#Will run updates, create an HTML page with every user and folder and the amount of memory they each use and a list of default Ubuntu programs, force update Firefox and Libre Office, and set a password policy.
-#TODO: Add a list of default Ubuntu 14.04 processes, configure the firewall, and run the virus scanner on the scripts exit.
-#Written for Ubuntu 14.04! No guarantee it will work in earlier or later versions!!
-#DO THE FORENSICS QUESTIONS FIRST!!!
+# Pretty simple shell script to do much of the basic CyberPatriot Ubuntu tasks.
+# Will run updates, create an HTML page with every user and folder and the amount of memory they each use and a list of default Ubuntu programs, force update Firefox and Libre Office, and set a password policy.
+# TODO: Add a list of default Ubuntu 14.04 processes, configure the firewall, and run the virus scanner on the scripts exit.
+# Written for Ubuntu 14.04! No guarantee it will work in earlier or later versions!!
+# DO THE FORENSICS QUESTIONS FIRST!!!
 
 ##### Constants
 
@@ -16,7 +16,7 @@ TIME_STAMP="Updated on $RIGHT_NOW by $USER"
 
 ##### Functions
 
-function show_uptime
+show_uptime()
 {
 	echo "<h2>System uptime</h2>"
 	echo "<pre>"
@@ -24,8 +24,7 @@ function show_uptime
 	echo "</pre>"
 }
 
-
-function drive_space
+drive_space()
 {
 	echo "<h2>Filesystem space</h2>"
 	echo "<pre>"
@@ -33,8 +32,7 @@ function drive_space
 	echo "</pre>"
 }
 
-
-function home_space
+home_space()
 {
 	echo "<h2>Home directory space by user</h2>"
 	echo "<pre>"
@@ -55,7 +53,7 @@ function home_space
 	echo "</pre>"
 }
 
-function program_list
+program_list()
 {
 	echo "<h2>Default programs on Ubuntu 14.04</h2>"
 	echo "<h3>Libre Office and Firefox are allowed always.</h3>"
@@ -175,13 +173,28 @@ function program_list
 	echo "</pre>"
 }
 
-function process_list
+process_list()
 {
-	echo "<pre>Not done yet.</pre>"
+	echo "<h2>Running Services</h2>"
+	echo "<pre>"
+		service --status-all | less -P "le Services"
+	echo "</pre>"
 }
 
+user_groups()
+{
+	echo "<h2>Users in Special Groups</h2>"
+	echo "<pre>"
+	echo "Members of group 'adm':"
+    grep adm /etc/group | cut -d ':' -f 4
+    echo "Members of group 'root':"
+    grep root /etc/group | cut -d ':' -f 4
+    echo "Members of group 'sudo':"
+    grep sudo /etc/group | cut -d ':' -f 4
+	echo "</pre>"
+}
 
-function write_page
+write_page()
 {
 	cat <<- _EOF_
 	<html>
@@ -195,6 +208,7 @@ function write_page
 		$(show_uptime)
 		$(drive_space)
 		$(home_space)
+		$(user_groups)
 		$(program_list)
 		$(process_list)
 		</body>
@@ -202,16 +216,103 @@ function write_page
 _EOF_
 }
 
-function edit_passwd_policy
+set_users()
+{
+	for i in `more userlist.txt `
+		do
+		echo $i
+		adduser $i
+	done
+}
+
+set_passwords()
+{
+	for i in `more userlist.txt `
+	do
+		echo $i
+		echo "+AcVd8$#C7yhnP=!uLY%" | passwd –-stdin "$i"
+		echo; echo "User $username’s password changed!"
+	done
+}
+
+set_update_settings()
+{
+    # these are the recommended settings set in software-properties-gtk
+    apt_config=/etc/apt/apt.conf.d/10periodic
+    echo "APT::Periodic::Update-Package-Lists \"1\";" > $apt_config
+    echo "APT::Periodic::Download-Upgradeable-Packages \"1\";" >> $apt_config
+    echo "APT::Periodic::AutocleanInterval \"0\";" >> $apt_config
+    echo "APT::Periodic::Unattended-Upgrade \"1\";" >> $apt_config
+    echo "Set apt update settings"
+}
+
+disable_ssh_root_login()
+{
+    if [[ -f /etc/ssh/sshd_config ]]; then
+        sed -i 's/PermitRootLogin .*/PermitRootLogin no/g' /etc/ssh/sshd_config
+    else
+        echo "No SSH server detected so nothing changed"
+    fi
+    echo "Disabled SSH root login"
+}
+
+find_media_files_in_dir()
+{
+    mediaroot="/home/"
+    mimes="image/\|video/\|audio/\|model/\|music/"
+    pushd $mediaroot > /dev/null
+    find -type f -print0 | xargs -0 file --mime-type | grep $mimes | less -P "le Media Files"
+    popd > /dev/null
+}
+
+preserve_root_uid()
+{
+    if [[ $(grep root /etc/passwd | wc -l) -gt 1 ]]; then
+        grep root /etc/passwd | wc -l
+    else
+        echo "$(tput setaf 2)UID 0 is reserved to root$(tput sgr0)"
+    fi
+}
+
+remove_hacking_tools()
+{
+    apt-get autoremove --purge john metasploit netcat nmap hydra aircrack-ng
+    echo "$(tput setaf 2)Hacking tools should be removed now$(tput sgr0)"
+}
+
+check_no_pass()
+{
+    sed -i s/NOPASSWD:// /etc/sudoers
+    echo "$(tput setaf 2)Removed any instances of NOPASSWD in sudoers$(tput sgr0)"
+}
+
+edit_passwd_policy()
 {
 	if grep -q "minlen" "/etc/pam.d/common-password"; then
 		sed -i 's/minlen=.*/minlen=12/' "/etc/pam.d/common-password"
 	else
 		sed -i 's/sha512/sha512 minlen=12/' "/etc/pam.d/common-password"
 	fi
+	
+	sed -i.bak -e 's/PASS_MAX_DAYS\t[[:digit:]]\+/PASS_MAX_DAYS\t90/' /etc/login.defs
+    sed -i -e 's/PASS_MIN_DAYS\t[[:digit:]]\+/PASS_MIN_DAYS\t10/' /etc/login.defs
+    sed -i -e 's/PASS_WARN_AGE\t[[:digit:]]\+/PASS_WARN_AGE\t7/' /etc/login.defs
+	
+	check_no_pass
+}
+
+disable_root_account()
+{
+  passwd -l root
+}
+
+disable_guest_account()
+{
+    echo 'allow-guest=false' >> /etc/lightdm/lightdm.conf
 }
 
 #### Main
+
 
 if [ $(id -u) != "0" ]; then
 {
@@ -227,6 +328,16 @@ fi
 echo "$(tput setaf 2)Printing BeforeRunning HTML page${reset}"
 write_page > BeforeRunning.html
 
+echo "$(tput setaf 2)Making sure only root has uid 0$(tput sgr0)"
+preserve_root_uid
+
+echo "$(tput setaf 2)Setting up users and passwords. Make sure to fix Admin passwords!${reset}"
+set_users
+set_passwords
+
+echo "$(tput setaf 2)Setting update settings$(tput sgr0)"
+set_update_settings
+
 echo "$(tput setaf 2)Updating$(tput sgr0)"
 sudo apt-get update
 echo "$(tput setaf 2)Upgrading$(tput sgr0)"
@@ -240,14 +351,41 @@ sudo add-apt-repository -y ppa:libreoffice/ppa
 echo "$(tput setaf 2)Updating again$(tput sgr0)"
 sudo apt-get update
 echo "$(tput setaf 2)Installing Libre Office$(tput sgr0)"
-sudo apt-get install libreoffice
+sudo apt-get --purge --reinstall install libreoffice
 
 echo "$(tput setaf 2)Updates are done!$(tput sgr0)"
 echo "$(tput setaf 2)Time to do password policy$(tput sgr0)"
 edit_passwd_policy
 echo "$(tput setaf 2)Done with password policy!$(tput sgr0)"
+
+echo "$(tput setaf 2)Disabling root ssh login$(tput sgr0)"
+disable_ssh_root_login
+
+echo "$(tput setaf 2)Disabling Guest account$(tput sgr0)"
+disable_guest_account
+
+echo "$(tput setaf 2)Disabling root account$(tput sgr0)"
+disable_root_account
+
+echo "$(tput setaf 2)Removing common hacking tools$(tput sgr0)"
+remove_hacking_tools
+
+echo "$(tput setaf 2)Finding media files and moving them to /dev/null/$(tput sgr0)"
+find_media_files_in_dir
+
+echo "$(tput setaf 2)Starting firewall and installing GUI$(tput sgr0)"
+sudo ufw enable
+sudo apt-get install firestarter
+
+echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
+sudo apt-get install clamav
+sudo freshclam
+sudo clamscan -r --bell -i /
+
+echo "$(tput setaf 2)Scan done. Generating post-script HTML file$(tput sgr0)"
 write_page > AfterRunning.html
 
-echo "$(tput setaf 2)You might have to remove the old version of Libre Office.${reset}"
-echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d${reset}"
-echo "$(tput setaf 2)Also, check cron jobs, update settings, and programs that exist but shouldn't.$(tput sgr0)"
+echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d and /etc/login.defs${reset}"
+echo "$(tput setaf 2)Also, duoble check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
+
+exit 0
