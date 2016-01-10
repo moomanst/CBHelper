@@ -18,6 +18,6 @@ Notes:
 # CBHelper Windows
 PowerShell script to do CyberPatriot Windows tasks.
 
-Set update policy, run updates, turn on the firewall, disable guest account, find media, set password policy, and set passwords.
+Set update policy, run updates, turn on the firewall, disable guest account, find media, update Firefox, install Malwarebytes and Malwarebytes Anti Rootkit, set password policy, and set passwords.
 
 DO THE FORENSICS QUESTIONS FIRST!!!

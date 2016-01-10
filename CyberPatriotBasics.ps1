@@ -3,10 +3,15 @@
 function enableFirewall
 {
     Write-host 'Enabling Windows firewall'
-    # For Win8 and newer/Server 2012 and newer
-    #Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
-    #For older OSes
-    netsh advfirewall set allprofiles state on
+    $win8 = Read-host 'Are you on Windows 8 or Server 2012 or newer (y/n)?'
+    if ($openUpdate -eq 'y') {
+        # For Win8 and newer/Server 2012 and newer
+        Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True
+    }
+    else {
+        #For older OSes
+        netsh advfirewall set allprofiles state on
+    }
 }
 
 function disableGuestAccount
@@ -58,10 +63,42 @@ function setLocalSecurityPolicies
 function setupAuditing
 {
     Write-host 'Setting up auditing'
+    # As of Windows 8
     $auditCategories = @("Account Logon", "Account Management", "Detailed Tracking", "DS Access", "Logon/Logoff", "Object Access", "Policy Change", "Privilege Use", "System")
     foreach ($i in $auditCategories) {
         C:\Windows\System32\cmd.exe /C auitpol.exe /set /category:"$i" /failure:enable
     }
+}
+
+function installFirefox
+{
+    Write-host 'Installing Firefox'
+    $uri = "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US"
+    $out = "c:\FireFoxInstaller.exe"
+    Invoke-WebRequest -Uri $uri -OutFile $out
+    & $out
+}
+
+function installMalwarebyts
+{
+    Write-host 'Installing Malwarebytes'
+    $down = New-Object System.Net.WebClient
+    $url  = 'https://downloads.malwarebytes.org/file/mbam_current/'
+    $file = 'c:\Program Files\malwaresetup.exe'
+    $down.DownloadFile($url,$file)
+
+    c:\Program Files\malwaresetup.exe /install=agent /silent /suppressmsgboxes
+}
+
+function installMalwarebytsAntiRootkit
+{
+    Write-host 'Installing Malwarebytes Anti-Rootkit'
+    $down = New-Object System.Net.WebClient
+    $url  = 'https://downloads.malwarebytes.org/file/mbar/'
+    $file = 'c:\Program Files\rootkitsetup.exe'
+    $down.DownloadFile($url,$file)
+
+    c:\Program Files\rootkitsetup.exe /install=agent /silent /suppressmsgboxes
 }
 
 function findMedia
@@ -77,4 +114,7 @@ setUserPasswords
 enableWindowsUpdate
 setLocalSecurityPolicies
 setupAuditing
+installFirefox
+installMalwarebytes
+installMalwarebytsAntiRootkit
 findMedia
