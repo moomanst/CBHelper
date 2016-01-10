@@ -66,7 +66,7 @@ function setupAuditing
     # As of Windows 8
     $auditCategories = @("Account Logon", "Account Management", "Detailed Tracking", "DS Access", "Logon/Logoff", "Object Access", "Policy Change", "Privilege Use", "System")
     foreach ($i in $auditCategories) {
-        C:\Windows\System32\cmd.exe /C auitpol.exe /set /category:"$i" /failure:enable
+        C:\Windows\System32\cmd.exe /C auditpol.exe /set /category:"$i" /failure:enable
     }
 }
 
@@ -82,23 +82,21 @@ function installFirefox
 function installMalwarebytes
 {
     Write-host 'Installing Malwarebytes'
-    $down = New-Object System.Net.WebClient
-    $url  = 'https://downloads.malwarebytes.org/file/mbam_current/'
-    $file = 'c:\Program Files\malwaresetup.exe'
-    $down.DownloadFile($url,$file)
+    $uri  = 'https://downloads.malwarebytes.org/file/mbam_current/'
+    $out = 'c:\malwaresetup.exe'
+    Invoke-WebRequest -Uri $uri -OutFile $out
 
-    c:\Program Files\malwaresetup.exe /install=agent /silent /suppressmsgboxes
+    & $out /install=agent /silent /suppressmsgboxes
 }
 
 function installMalwarebytesAntiRootkit
 {
-    Write-host 'Installing Malwarebytes Anti-Rootkit'
-    $down = New-Object System.Net.WebClient
-    $url  = 'https://downloads.malwarebytes.org/file/mbar/'
-    $file = 'c:\Program Files\rootkitsetup.exe'
-    $down.DownloadFile($url,$file)
+    Write-host 'Installing Malwarebytes Anti-Rootkit. Unfortunately, it does not have a silent install mode.'
+    $uri  = 'https://downloads.malwarebytes.org/file/mbar/'
+    $out = 'c:\rootkitsetup.exe'
+    Invoke-WebRequest -Uri $uri -OutFile $out
 
-    c:\Program Files\rootkitsetup.exe /install=agent /silent /suppressmsgboxes
+    & $out /install=agent /silent /suppressmsgboxes
 }
 
 function findMedia
