@@ -365,13 +365,16 @@ echo "$(tput setaf 2)Starting firewall and installing GUI$(tput sgr0)"
 sudo ufw enable
 sudo apt-get install firestarter
 
+echo "$(tput setaf 2)Generating post-script HTML file$(tput sgr0)"
+write_page > AfterRunning.html
+
 echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
 sudo apt-get install clamav
 sudo freshclam
 sudo clamscan -r --bell -i /
 
-echo "$(tput setaf 2)Scan done. Generating post-script HTML file$(tput sgr0)"
-write_page > AfterRunning.html
+echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
+write_page > AfterRunningScan.html
 
 echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d and /etc/login.defs${reset}"
 echo "$(tput setaf 2)Also, duoble check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
