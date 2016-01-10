@@ -1,5 +1,5 @@
-# CBHelper
-Shell script to do much of the basic CyberPatriot Ubuntu tasks.
+# CBHelper Ubuntu
+Shell script to do CyberPatriot Ubuntu tasks.
 
 Make sure to do chmod 755 for all the files that are included.
 
@@ -12,5 +12,12 @@ Written for Ubuntu 14.04! No guarantee it will work in earlier or later versions
 DO THE FORENSICS QUESTIONS FIRST!!!
 
 Notes:
-	Make sure userlist.txt has the correct names (and that are one per line).
+	Make sure userlist.txt has the correct names (and that there is only one per line).
 	Set who is admin/not after running the script, and fix admin passwords.
+	
+# CBHelper Windows
+PowerShell script to do CyberPatriot Windows tasks.
+
+Set update policy, run updates, turn on the firewall, disable guest account, find media, set password policy, and set passwords.
+
+DO THE FORENSICS QUESTIONS FIRST!!!

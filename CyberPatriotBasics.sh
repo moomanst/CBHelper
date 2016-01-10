@@ -371,6 +371,7 @@ write_page > AfterRunning.html
 echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
 sudo apt-get install clamav
 sudo freshclam
+echo "$(tput setaf 2)Scan started$(tput sgr0)"
 sudo clamscan -r --bell -i /
 
 echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
