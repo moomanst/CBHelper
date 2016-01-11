@@ -76,7 +76,7 @@ function installFirefox
     $uri = "https://download.mozilla.org/?product=firefox-stub&os=win&lang=en-US"
     $out = "c:\FireFoxInstaller.exe"
     Invoke-WebRequest -Uri $uri -OutFile $out
-    & $out
+    & $out /install=agent /silent /suppressmsgboxes
 }
 
 function installMalwarebytes
@@ -91,7 +91,7 @@ function installMalwarebytes
 
 function installMalwarebytesAntiRootkit
 {
-    Write-host 'Installing Malwarebytes Anti-Rootkit. Unfortunately, it does not have a silent install mode.'
+    Write-host 'Installing Malwarebytes Anti-Rootkit. It will automatically start running upon installing, but I suggest running Malwarebytes first.'
     $uri  = 'https://downloads.malwarebytes.org/file/mbar/'
     $out = 'c:\rootkitsetup.exe'
     Invoke-WebRequest -Uri $uri -OutFile $out
