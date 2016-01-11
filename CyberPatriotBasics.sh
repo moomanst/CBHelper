@@ -368,6 +368,17 @@ echo "$(tput setaf 2)Generating post-script HTML file$(tput sgr0)"
 write_page > AfterRunning.html
 
 echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
+if [[ ! -d "/home/VIRUS" ]]
+then
+        if [[ ! -L "/home/VIRUS" ]]
+        then
+                echo "Directory doesn't exist. Creating now"
+                mkdir "/home/VIRUS"
+                echo "Directory created"
+        else
+                echo "Directory exists"
+        fi
+fi
 sudo apt-get install clamav
 sudo freshclam
 echo "$(tput setaf 2)Scan started$(tput sgr0)"
