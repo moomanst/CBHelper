@@ -372,7 +372,7 @@ echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
 sudo apt-get install clamav
 sudo freshclam
 echo "$(tput setaf 2)Scan started$(tput sgr0)"
-sudo clamscan -r --bell -i /
+sudo clamscan -r --bell -i --move=/home/VIRUS /
 
 echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
 write_page > AfterRunningScan.html
