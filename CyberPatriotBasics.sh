@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Pretty simple shell script to do much of the basic CyberPatriot Ubuntu tasks.
+# Shell script to do much of the basic CyberPatriot Ubuntu tasks.
 # Will run updates, create an HTML page with every user and folder and the amount of memory they each use and a list of default Ubuntu programs, force update Firefox and Libre Office, and set a password policy.
 # TODO: Add a list of default Ubuntu 14.04 processes, configure the firewall, and run the virus scanner on the scripts exit.
 # Written for Ubuntu 14.04! No guarantee it will work in earlier or later versions!!
@@ -286,8 +286,8 @@ edit_passwd_policy()
 	fi
 	
 	sed -i.bak -e 's/PASS_MAX_DAYS\t[[:digit:]]\+/PASS_MAX_DAYS\t30/' /etc/login.defs
-    sed -i -e 's/PASS_MIN_DAYS\t[[:digit:]]\+/PASS_MIN_DAYS\t7/' /etc/login.defs
-    sed -i -e 's/PASS_WARN_AGE\t[[:digit:]]\+/PASS_WARN_AGE\t14/' /etc/login.defs
+    	sed -i -e 's/PASS_MIN_DAYS\t[[:digit:]]\+/PASS_MIN_DAYS\t7/' /etc/login.defs
+    	sed -i -e 's/PASS_WARN_AGE\t[[:digit:]]\+/PASS_WARN_AGE\t14/' /etc/login.defs
 	
 	check_no_pass
 }
