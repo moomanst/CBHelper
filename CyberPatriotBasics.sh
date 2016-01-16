@@ -330,19 +330,19 @@ echo "$(tput setaf 2)Setting update settings$(tput sgr0)"
 set_update_settings
 
 echo "$(tput setaf 2)Updating$(tput sgr0)"
-sudo apt-get update
+apt-get update
 echo "$(tput setaf 2)Upgrading$(tput sgr0)"
-sudo apt-get upgrade
+apt-get upgrade
 
 echo "$(tput setaf 2)Firefox is sometimes a little bitch and won't update with everyone else, cause it wants to be a special little snowflake$(tput sgr0)"
-sudo apt-get --purge --reinstall install firefox
+apt-get --purge --reinstall install firefox
 echo "$(tput setaf 2)Same with Libre Office$(tput sgr0)"
 echo "$(tput setaf 2)Adding Libre Office repository$(tput sgr0)"
-sudo add-apt-repository -y ppa:libreoffice/ppa
+add-apt-repository -y ppa:libreoffice/ppa
 echo "$(tput setaf 2)Updating again$(tput sgr0)"
-sudo apt-get update
+apt-get update
 echo "$(tput setaf 2)Installing Libre Office$(tput sgr0)"
-sudo apt-get --purge --reinstall install libreoffice
+apt-get --purge --reinstall install libreoffice
 
 echo "$(tput setaf 2)Updates are done!$(tput sgr0)"
 echo "$(tput setaf 2)Time to do password policy$(tput sgr0)"
@@ -362,7 +362,7 @@ echo "$(tput setaf 2)Removing common hacking tools$(tput sgr0)"
 remove_hacking_tools
 
 echo "$(tput setaf 2)Starting firewall$(tput sgr0)"
-sudo ufw enable
+ufw enable
 
 echo "$(tput setaf 2)Generating post-script HTML file$(tput sgr0)"
 write_page > AfterRunning.html
@@ -379,10 +379,10 @@ then
                 echo "Directory exists"
         fi
 fi
-sudo apt-get install clamav
-sudo freshclam
+apt-get install clamav
+freshclam
 echo "$(tput setaf 2)Scan started$(tput sgr0)"
-sudo clamscan -r --bell -i --move=/home/VIRUS /
+clamscan -r --bell -i --move=/home/VIRUS /
 
 echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
 write_page > AfterRunningScan.html
