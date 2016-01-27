@@ -389,5 +389,6 @@ write_page > AfterRunningScan.html
 
 echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d and /etc/login.defs${reset}"
 echo "$(tput setaf 2)Also, duoble check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
+echo "$(tput setaf 2)Also, configure iptables. The requirements will be implied in the readme on the desktop, and will be different for every round.$(tput sgr0)"
 
 exit 0
