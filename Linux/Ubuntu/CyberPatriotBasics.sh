@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Pretty simple shell script to do much of the basic CyberPatriot Ubuntu tasks.
+# Shell script to do much of the basic CyberPatriot Ubuntu tasks.
 # Will run updates, create an HTML page with every user and folder and the amount of memory they each use and a list of default Ubuntu programs, force update Firefox and Libre Office, and set a password policy.
-# TODO: Add a list of default Ubuntu 14.04 processes, configure the firewall, and run the virus scanner on the scripts exit.
+# TODO: Add a list of default Ubuntu 14.04 processes.
 # Written for Ubuntu 14.04! No guarantee it will work in earlier or later versions!!
 # DO THE FORENSICS QUESTIONS FIRST!!!
 
@@ -286,8 +286,8 @@ edit_passwd_policy()
 	fi
 	
 	sed -i.bak -e 's/PASS_MAX_DAYS\t[[:digit:]]\+/PASS_MAX_DAYS\t30/' /etc/login.defs
-    sed -i -e 's/PASS_MIN_DAYS\t[[:digit:]]\+/PASS_MIN_DAYS\t7/' /etc/login.defs
-    sed -i -e 's/PASS_WARN_AGE\t[[:digit:]]\+/PASS_WARN_AGE\t14/' /etc/login.defs
+    	sed -i -e 's/PASS_MIN_DAYS\t[[:digit:]]\+/PASS_MIN_DAYS\t7/' /etc/login.defs
+    	sed -i -e 's/PASS_WARN_AGE\t[[:digit:]]\+/PASS_WARN_AGE\t14/' /etc/login.defs
 	
 	check_no_pass
 }
@@ -330,21 +330,25 @@ echo "$(tput setaf 2)Setting update settings$(tput sgr0)"
 set_update_settings
 
 echo "$(tput setaf 2)Updating$(tput sgr0)"
-sudo apt-get update
+apt-get update
 echo "$(tput setaf 2)Upgrading$(tput sgr0)"
-sudo apt-get upgrade
+apt-get upgrade
 
 echo "$(tput setaf 2)Firefox is sometimes a little bitch and won't update with everyone else, cause it wants to be a special little snowflake$(tput sgr0)"
-sudo apt-get --purge --reinstall install firefox
+apt-get --purge --reinstall install firefox
 echo "$(tput setaf 2)Same with Libre Office$(tput sgr0)"
 echo "$(tput setaf 2)Adding Libre Office repository$(tput sgr0)"
-sudo add-apt-repository -y ppa:libreoffice/ppa
+add-apt-repository -y ppa:libreoffice/ppa
 echo "$(tput setaf 2)Updating again$(tput sgr0)"
-sudo apt-get update
+apt-get update
 echo "$(tput setaf 2)Installing Libre Office$(tput sgr0)"
+<<<<<<< HEAD:Linux/Ubuntu/CyberPatriotBasics.sh
 sudo apt-get --purge --reinstall install libreoffice
 echo "$(tput setaf 2)Install Cracklib$(tput sgr0)"
 sudo apt-get install libpam-cracklib --force-yes -y
+=======
+apt-get --purge --reinstall install libreoffice
+>>>>>>> origin/master:CyberPatriotBasics.sh
 
 echo "$(tput setaf 2)Updates are done!$(tput sgr0)"
 echo "$(tput setaf 2)Time to do password policy$(tput sgr0)"
@@ -364,21 +368,33 @@ echo "$(tput setaf 2)Removing common hacking tools$(tput sgr0)"
 remove_hacking_tools
 
 echo "$(tput setaf 2)Starting firewall$(tput sgr0)"
-sudo ufw enable
+ufw enable
 
 echo "$(tput setaf 2)Generating post-script HTML file$(tput sgr0)"
 write_page > AfterRunning.html
 
 echo "$(tput setaf 2)Finished everything else, time to run Clam$(tput sgr0)"
-sudo apt-get install clamav
-sudo freshclam
+if [[ ! -d "/home/VIRUS" ]]
+then
+        if [[ ! -L "/home/VIRUS" ]]
+        then
+                echo "Directory doesn't exist. Creating now"
+                mkdir "/home/VIRUS"
+                echo "Directory created"
+        else
+                echo "Directory exists"
+        fi
+fi
+apt-get install clamav
+freshclam
 echo "$(tput setaf 2)Scan started$(tput sgr0)"
-sudo clamscan -r --bell -i --move=/home/VIRUS /
+clamscan -r --bell -i --move=/home/VIRUS /
 
 echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
 write_page > AfterRunningScan.html
 
 echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d and /etc/login.defs${reset}"
 echo "$(tput setaf 2)Also, duoble check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
+echo "$(tput setaf 2)Also, configure iptables. The requirements will be implied in the readme on the desktop, and will be different for every round.$(tput sgr0)"
 
 exit 0
