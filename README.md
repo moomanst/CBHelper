@@ -16,8 +16,8 @@ Notes:
 	Set who is admin/not after running the script, and fix admin passwords.
 	
 # CBHelper Windows
-PowerShell script to do CyberPatriot Windows tasks.
+I replaced the PowerShell script with a Windows Forms program, becuase I HATE PowerShell. When its finished, it will have the ability to:
 
-Set update policy, run updates, turn on the firewall, disable guest account, find media, update Firefox, install Malwarebytes and Malwarebytes Anti Rootkit, set password policy, and set passwords.
+Set update policy, run updates, turn on the firewall, disable guest account, find media (probably), update Firefox, install Malwarebytes and Malwarebytes Anti Rootkit, set password policy, and set passwords (maybe).
 
 DO THE FORENSICS QUESTIONS FIRST!!!
