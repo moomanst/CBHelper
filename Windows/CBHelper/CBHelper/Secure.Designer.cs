@@ -47,6 +47,8 @@
             this.SetupAuditing = new System.Windows.Forms.Button();
             this.AuditList = new System.Windows.Forms.CheckedListBox();
             this.AuditReminder = new System.Windows.Forms.TextBox();
+            this.ConsoleText = new System.Windows.Forms.TextBox();
+            this.DiagHTML = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InstallFirefox
@@ -245,13 +247,37 @@
             this.AuditReminder.Size = new System.Drawing.Size(199, 63);
             this.AuditReminder.TabIndex = 13;
             this.AuditReminder.Text = "Double check that this is working in: \"Local Policies\" -> \"Audit Policy\" in secpo" +
-    "l.msc.";
+    "l.msc. Options vary with Windows version.";
+            // 
+            // ConsoleText
+            // 
+            this.ConsoleText.BackColor = System.Drawing.SystemColors.InfoText;
+            this.ConsoleText.ForeColor = System.Drawing.Color.LimeGreen;
+            this.ConsoleText.Location = new System.Drawing.Point(12, 514);
+            this.ConsoleText.Multiline = true;
+            this.ConsoleText.Name = "ConsoleText";
+            this.ConsoleText.Size = new System.Drawing.Size(900, 181);
+            this.ConsoleText.TabIndex = 18;
+            // 
+            // DiagHTML
+            // 
+            this.DiagHTML.Location = new System.Drawing.Point(711, 288);
+            this.DiagHTML.Name = "DiagHTML";
+            this.DiagHTML.Size = new System.Drawing.Size(128, 23);
+            this.DiagHTML.TabIndex = 19;
+            this.DiagHTML.Text = "Create HTML File";
+            this.DiagHTML.UseVisualStyleBackColor = true;
+            this.DiagHTML.Click += new System.EventHandler(this.DiagHTML_Click);
             // 
             // Secure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 754);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(924, 707);
+            this.Controls.Add(this.DiagHTML);
+            this.Controls.Add(this.ConsoleText);
             this.Controls.Add(this.AuditList);
             this.Controls.Add(this.SetupAuditing);
             this.Controls.Add(this.InstallSpybot);
@@ -272,9 +298,13 @@
             this.Controls.Add(this.Chocolatey);
             this.Controls.Add(this.InstallFirefox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(940, 746);
+            this.MinimumSize = new System.Drawing.Size(940, 746);
             this.Name = "Secure";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CBHelper";
+            this.Load += new System.EventHandler(this.Secure_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,6 +331,8 @@
         private System.Windows.Forms.Button SetupAuditing;
         private System.Windows.Forms.CheckedListBox AuditList;
         private System.Windows.Forms.TextBox AuditReminder;
+        private System.Windows.Forms.TextBox ConsoleText;
+        private System.Windows.Forms.Button DiagHTML;
     }
 }
 
