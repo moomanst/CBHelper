@@ -37,6 +37,7 @@ namespace CBHelper
             string path = @"HTMLDiag.html";
             int uptime = Environment.TickCount & Int32.MaxValue;
             string time = DateTime.Now.ToShortTimeString();
+            //string media = FindMedia();
 
             try
             {
@@ -55,14 +56,13 @@ namespace CBHelper
                 // Create the file.
                 using (FileStream fs = File.Create(path))
                 {
-                    string media = FindMedia();
                     Byte[] info = new UTF8Encoding(true).GetBytes(
                         "<html><head><title>"+Environment.MachineName+" | " + time + "</title></head>"+
                         "<body><h1>System info</h1><p>"+ time + "</p>"+
-                        "<h2>System uptime</h2><pre>"+ uptime/600000 + " minutes</pre>"+
+                        "<h2>System uptime</h2><pre>"+ uptime + "</pre>"+
                         "<h2>Attempt to find media files</h2>"+
                         "<pre>"+
-                        media + "</pre>"+
+                        String.Join(String.Empty, FindMedia(@"C:\", "jpg").ToArray()) + "</pre>"+
                         "</pre></body></head>");
                     // Add some information to the file.
                     fs.Write(info, 0, info.Length);
@@ -190,25 +190,18 @@ namespace CBHelper
         /// <summary>
         /// Searches for media files in the Users directory. Currently fails because of permission errors.
         /// </summary>
-        /// <returns></returns>
-        private string FindMedia()
+        /// <param name="filetype">Filetype to search for.</param>
+        /// <returns>String of files found.</returns>
+        private List<string> FindMedia(string path, string filetype)
         {
-            string result = "";
+            var files = new List<string>();
+            string pattern = "*." + filetype;
             try
             {
-                var files = from file in
-                   Directory.EnumerateFiles(@"C:\Users", "*.jpg", SearchOption.AllDirectories)
-                            select file;
-
-                // Show results.
-                foreach (var file in files)
-                {
-                    result += file.ToString() +"\n";
-                }
-                Console.WriteLine("{0} jpgs found.",
-                    files.Count<string>().ToString());
+                files.AddRange(Directory.GetFiles(path, pattern, SearchOption.AllDirectories));
+                foreach (var directory in Directory.GetDirectories(path))
+                    files.AddRange(Directory.GetFiles(directory, pattern));
             }
-
             catch (UnauthorizedAccessException UAEx)
             {
                 Console.WriteLine(UAEx.Message);
@@ -217,8 +210,8 @@ namespace CBHelper
             {
                 Console.WriteLine(PathEx.Message);
             }
-
-            return result;
+            
+            return files;
         }
     }
 }
