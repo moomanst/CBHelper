@@ -267,7 +267,28 @@ preserve_root_uid()
 
 remove_hacking_tools()
 {
-    apt-get autoremove --purge john metasploit netcat nmap hydra aircrack-ng
+#http://tools.kali.org/tools-listing#webapplications
+    apt-get autoremove --purge airbase-ng acccheck ace-voip amap armitage asleap automater \
+	backdoor-factory bbqsql bed beef bing-ip2hosts binwalk bluelog bluemaho bluepot blueranger bluesnarfer bulk-extractor bully braa \
+	capstone casefile cdpsnarf chntpw cisco-auditing-tool cisco-global-exploiter cisco-ocs cisco-torch cisco-router-config cookie-cadger commix cowpatty \
+	crackle copy-router-config cuckoo \
+	dbpwaudit dc3dd ddrescue dff distorm3 dmitry dnmap dnsenum dnsmap dnsrecon dnstracer dnswalk doona dotdotpwn dumpzilla \
+	eapmd5pass enum4linux enumiax exploitdb extundelete \
+	fern-wifi-cracker fierce firewalk fragroute foremost \
+	galleta ghost-fisher giskismet go-lismero goofile gsad gsd gqrx guymager gr-scan \
+	hexorbase hping3 hydra \
+	inguma intrace iphone-backup-analyzer ismtp \
+	jboss-autopwn john jsql \
+	kalibrate-rtl killerbee kismet \
+	linux-exploit-suggester ldb lynis \
+	maltego-teeth masscan mdk3 metagoofil metasploit mfcuk mfoc mfterm miranda multimon-ng \
+	netcat nmap ntop \
+	ohwurm openvas-administrator openvas-cli openvas-manager openvas-scanner oscanner \
+	p0f parsero pdf-parser pdfid pdgmail peepdf pixiewps powerfuzzer \
+	reaver recon-ng redfang regripper rtlsdr-scanner \
+	setoolkit sfuzz shellnoob sidguesser siparmyknife smtp-user-enum snmpcheck spooftootph sslcaudit sslsplit sslstrip sslyze sqlmap sqlninja sqlsus \
+	thc-ipv6 tnscmd10g theharverster tlssled twofi \
+	urlcrazy unix-privesc-check wifi-honey wifitap wifite wireshark volatility wol-e xplico yersinia
     echo "$(tput setaf 2)Hacking tools should be removed now$(tput sgr0)"
 }
 
