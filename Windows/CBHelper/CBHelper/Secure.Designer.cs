@@ -49,6 +49,11 @@
             this.AuditReminder = new System.Windows.Forms.TextBox();
             this.ConsoleText = new System.Windows.Forms.TextBox();
             this.DiagHTML = new System.Windows.Forms.Button();
+            this.SysinternalsLabel = new System.Windows.Forms.Label();
+            this.InstallSysinternals = new System.Windows.Forms.Button();
+            this.NotepadPlusPlusLabel = new System.Windows.Forms.Label();
+            this.InstallNotepadPlusPlus = new System.Windows.Forms.Button();
+            this.UpdateNotepadPlusPlus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // InstallFirefox
@@ -269,6 +274,56 @@
             this.DiagHTML.UseVisualStyleBackColor = true;
             this.DiagHTML.Click += new System.EventHandler(this.DiagHTML_Click);
             // 
+            // SysinternalsLabel
+            // 
+            this.SysinternalsLabel.AutoSize = true;
+            this.SysinternalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SysinternalsLabel.Location = new System.Drawing.Point(83, 340);
+            this.SysinternalsLabel.Name = "SysinternalsLabel";
+            this.SysinternalsLabel.Size = new System.Drawing.Size(108, 22);
+            this.SysinternalsLabel.TabIndex = 20;
+            this.SysinternalsLabel.Text = "Sysinternals";
+            // 
+            // InstallSysinternals
+            // 
+            this.InstallSysinternals.Location = new System.Drawing.Point(12, 365);
+            this.InstallSysinternals.Name = "InstallSysinternals";
+            this.InstallSysinternals.Size = new System.Drawing.Size(128, 23);
+            this.InstallSysinternals.TabIndex = 21;
+            this.InstallSysinternals.Text = "Install Sysinternals";
+            this.InstallSysinternals.UseVisualStyleBackColor = true;
+            this.InstallSysinternals.Click += new System.EventHandler(this.InstallSysinternals_Click);
+            // 
+            // NotepadPlusPlusLabel
+            // 
+            this.NotepadPlusPlusLabel.AutoSize = true;
+            this.NotepadPlusPlusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotepadPlusPlusLabel.Location = new System.Drawing.Point(83, 415);
+            this.NotepadPlusPlusLabel.Name = "NotepadPlusPlusLabel";
+            this.NotepadPlusPlusLabel.Size = new System.Drawing.Size(100, 22);
+            this.NotepadPlusPlusLabel.TabIndex = 22;
+            this.NotepadPlusPlusLabel.Text = "Notepad++";
+            // 
+            // InstallNotepadPlusPlus
+            // 
+            this.InstallNotepadPlusPlus.Location = new System.Drawing.Point(12, 440);
+            this.InstallNotepadPlusPlus.Name = "InstallNotepadPlusPlus";
+            this.InstallNotepadPlusPlus.Size = new System.Drawing.Size(128, 23);
+            this.InstallNotepadPlusPlus.TabIndex = 23;
+            this.InstallNotepadPlusPlus.Text = "Install Notepad++";
+            this.InstallNotepadPlusPlus.UseVisualStyleBackColor = true;
+            this.InstallNotepadPlusPlus.Click += new System.EventHandler(this.InstallNotepadPlusPlus_Click);
+            // 
+            // UpdateNotepadPlusPlus
+            // 
+            this.UpdateNotepadPlusPlus.Location = new System.Drawing.Point(145, 440);
+            this.UpdateNotepadPlusPlus.Name = "UpdateNotepadPlusPlus";
+            this.UpdateNotepadPlusPlus.Size = new System.Drawing.Size(128, 23);
+            this.UpdateNotepadPlusPlus.TabIndex = 24;
+            this.UpdateNotepadPlusPlus.Text = "Update Notepad++";
+            this.UpdateNotepadPlusPlus.UseVisualStyleBackColor = true;
+            this.UpdateNotepadPlusPlus.Click += new System.EventHandler(this.UpdateNotepadPlusPlus_Click);
+            // 
             // Secure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +331,11 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(924, 707);
+            this.Controls.Add(this.UpdateNotepadPlusPlus);
+            this.Controls.Add(this.InstallNotepadPlusPlus);
+            this.Controls.Add(this.NotepadPlusPlusLabel);
+            this.Controls.Add(this.InstallSysinternals);
+            this.Controls.Add(this.SysinternalsLabel);
             this.Controls.Add(this.DiagHTML);
             this.Controls.Add(this.ConsoleText);
             this.Controls.Add(this.AuditList);
@@ -333,6 +393,11 @@
         private System.Windows.Forms.TextBox AuditReminder;
         private System.Windows.Forms.TextBox ConsoleText;
         private System.Windows.Forms.Button DiagHTML;
+        private System.Windows.Forms.Label SysinternalsLabel;
+        private System.Windows.Forms.Button InstallSysinternals;
+        private System.Windows.Forms.Label NotepadPlusPlusLabel;
+        private System.Windows.Forms.Button InstallNotepadPlusPlus;
+        private System.Windows.Forms.Button UpdateNotepadPlusPlus;
     }
 }
 

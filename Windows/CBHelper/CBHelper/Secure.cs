@@ -7,7 +7,6 @@ using NetFwTypeLib;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-using System.Security.Principal;
 
 namespace CBHelper
 {
@@ -38,6 +37,14 @@ namespace CBHelper
             int uptime = Environment.TickCount & Int32.MaxValue;
             string time = DateTime.Now.ToShortTimeString();
             //string media = FindMedia();
+            Process[] processlist = Process.GetProcesses();
+            string processes = "";
+
+            foreach (Process process in processlist)
+            {
+                Console.WriteLine("Process: {0}   ID: {1}", process.ProcessName, process.Id);
+                processes += "Process: " + process.ProcessName + "   ID: " + process.Id + "\n\n";
+            }
 
             try
             {
@@ -59,10 +66,10 @@ namespace CBHelper
                     Byte[] info = new UTF8Encoding(true).GetBytes(
                         "<html><head><title>"+Environment.MachineName+" | " + time + "</title></head>"+
                         "<body><h1>System info</h1><p>"+ time + "</p>"+
-                        "<h2>System uptime</h2><pre>"+ uptime + "</pre>"+
-                        "<h2>Attempt to find media files</h2>"+
+                        "<h2>System uptime</h2><pre>"+ uptime + " ms</pre>"+
+                        "<h2>Current processes</h2>" +
                         "<pre>"+
-                        String.Join(String.Empty, FindMedia(@"C:\", "jpg").ToArray()) + "</pre>"+
+                        processes +
                         "</pre></body></head>");
                     // Add some information to the file.
                     fs.Write(info, 0, info.Length);
@@ -81,7 +88,7 @@ namespace CBHelper
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Process.Start(string.Format("http://stackoverflow.com/search?q=%5Bc%23%5D%20{0}", Uri.EscapeUriString(ex.Message)));
             }
         }
 
@@ -108,7 +115,26 @@ namespace CBHelper
         #region Spybot - Search and Destroy
         private void InstallSpybot_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install spybot");
+            exec_cmd("choco install spybot -y");
+        }
+        #endregion
+
+        #region Sysinternals
+        private void InstallSysinternals_Click(object sender, EventArgs e)
+        {
+            exec_cmd("choco install sysinternals -y");
+        }
+        #endregion
+
+        #region Notepad++
+        private void InstallNotepadPlusPlus_Click(object sender, EventArgs e)
+        {
+            exec_cmd("choco install notepadplusplus -y");
+        }
+
+        private void UpdateNotepadPlusPlus_Click(object sender, EventArgs e)
+        {
+            exec_cmd("choco upgrade notepadplusplus -y");
         }
         #endregion
         #endregion
@@ -178,6 +204,7 @@ namespace CBHelper
             proc1.FileName = @"C:\Windows\System32\cmd.exe";
             proc1.Verb = "runas";
             proc1.Arguments = "/C " + arguments;
+            proc1.CreateNoWindow = true;
             p.StartInfo = proc1;
             p.Start();
 
@@ -186,32 +213,29 @@ namespace CBHelper
             p.WaitForExit();
         }
 
-        // TODO: Finish this.
         /// <summary>
         /// Searches for media files in the Users directory. Currently fails because of permission errors.
         /// </summary>
+        /// <param name="path">Where to search for files.</param>
         /// <param name="filetype">Filetype to search for.</param>
-        /// <returns>String of files found.</returns>
-        private List<string> FindMedia(string path, string filetype)
+        /// <returns>String of files found</returns>
+        IEnumerable<String> GetAllFiles(string path, string filetype)
         {
-            var files = new List<string>();
-            string pattern = "*." + filetype;
-            try
-            {
-                files.AddRange(Directory.GetFiles(path, pattern, SearchOption.AllDirectories));
-                foreach (var directory in Directory.GetDirectories(path))
-                    files.AddRange(Directory.GetFiles(directory, pattern));
-            }
-            catch (UnauthorizedAccessException UAEx)
-            {
-                Console.WriteLine(UAEx.Message);
-            }
-            catch (PathTooLongException PathEx)
-            {
-                Console.WriteLine(PathEx.Message);
-            }
-            
-            return files;
+            //return System.IO.Directory.EnumerateFiles(path, filetype).Union(
+            //    System.IO.Directory.EnumerateDirectories(path).SelectMany(d =>
+            //    {
+            //        try
+            //        {
+            //            return GetAllFiles(d, filetype);
+            //        }
+            //        catch (UnauthorizedAccessException e)
+            //        {
+            //            //Process.Start(string.Format("http://stackoverflow.com/search?q=%5Bc%23%5D%20{0}", Uri.EscapeUriString(e.Message)));
+            //            Console.WriteLine(e.Message);
+            //            return Enumerable.Empty<String>();
+            //        }
+            //    }));String.Join(String.Empty, GetAllFiles(@"C:\Users\", "jpg").ToArray())
+            return Enumerable.Empty<string>();
         }
     }
 }
