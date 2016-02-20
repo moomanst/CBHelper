@@ -194,6 +194,14 @@ user_groups()
 	echo "</pre>"
 }
 
+find_media()
+{
+	echo "<h2>Media Files</h2>"
+	echo "<pre>"
+	find /home/ | egrep -e ".*.(jpg|tif|png|gif|wav|mp3|ogg|flac|wma|aac|m4a|flv|webm|ogv|gif|gifv|avi|wmv|mp4|mpg|3gp)"
+	echo "</pre>"
+}
+
 write_page()
 {
 	cat <<- _EOF_
@@ -209,6 +217,7 @@ write_page()
 		$(drive_space)
 		$(home_space)
 		$(user_groups)
+		$(find_media)
 		$(program_list)
 		$(process_list)
 		</body>
@@ -418,7 +427,7 @@ echo "$(tput setaf 2)Scan done. Generating post-scan HTML file$(tput sgr0)"
 write_page > AfterRunningScan.html
 
 echo "$(tput setaf 2)And I suggest double checking common-password in /etc/pam.d and /etc/login.defs${reset}"
-echo "$(tput setaf 2)Also, duoble check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
+echo "$(tput setaf 2)Also, double check cron jobs, update settings, and programs/processes that exist but shouldn't.$(tput sgr0)"
 echo "$(tput setaf 2)Also, configure iptables. The requirements will be implied in the readme on the desktop, and will be different for every round.$(tput sgr0)"
 
 exit 0
