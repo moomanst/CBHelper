@@ -370,13 +370,9 @@ add-apt-repository -y ppa:libreoffice/ppa
 echo "$(tput setaf 2)Updating again$(tput sgr0)"
 apt-get update
 echo "$(tput setaf 2)Installing Libre Office$(tput sgr0)"
-<<<<<<< HEAD:Linux/Ubuntu/CyberPatriotBasics.sh
 sudo apt-get --purge --reinstall install libreoffice
 echo "$(tput setaf 2)Install Cracklib$(tput sgr0)"
 sudo apt-get install libpam-cracklib --force-yes -y
-=======
-apt-get --purge --reinstall install libreoffice
->>>>>>> origin/master:CyberPatriotBasics.sh
 
 echo "$(tput setaf 2)Updates are done!$(tput sgr0)"
 echo "$(tput setaf 2)Time to do password policy$(tput sgr0)"
