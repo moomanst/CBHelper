@@ -6,8 +6,6 @@ using WUApiLib;
 using NetFwTypeLib;
 using System.IO;
 using System.Text;
-using System.Collections.Generic;
-using System.Management.Automation;
 
 namespace CBHelper
 {
@@ -25,12 +23,6 @@ namespace CBHelper
         {
             writer = new TextBoxStreamWriter(ConsoleText);
             Console.SetOut(writer);
-        }
-
-        private void Chocolatey_Click(object sender, EventArgs e)
-        {
-            ExecCommand("powershell \"Set-ExecutionPolicy AllSigned\"");
-            ExecCommand(@"@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin");
         }
 
         private void DiagHTML_Click(object sender, EventArgs e)
@@ -95,48 +87,43 @@ namespace CBHelper
         }
 
         #region Installs
-        #region Firefox
-        private void InstallFirefox_Click(object sender, EventArgs e)
+        #region Ninite
+        private void Install8Ninite_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco install firefox -y");
+            Process.Start(@"..\RandomTools\Ninite8.exe");
         }
 
-        private void UpdateFirefox_Click(object sender, EventArgs e)
+        private void InstallVistaServerNinite_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco upgrade firefox -y");
-        }
-        #endregion
-
-        #region Malwarebytes
-        private void InstallMalwarebytes_Click(object sender, EventArgs e)
-        {
-            ExecCommand("choco install malwarebytes -y");
+            Process.Start(@"..\RandomTools\NiniteServer.exe");
         }
         #endregion
 
-        #region Spybot - Search and Destroy
-        private void InstallSpybot_Click(object sender, EventArgs e)
+        #region Search Everything
+        private void InstallSearch_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco install spybot -y");
+            Process.Start(@"..\RandomTools\EverythingSetup.exe");
         }
         #endregion
 
-        #region Sysinternals
-        private void InstallSysinternals_Click(object sender, EventArgs e)
+        #region Unlocker
+        private void InstallUnlocker_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco install sysinternals -y");
+            Process.Start(@"..\RandomTools\Unlocker.exe");
         }
         #endregion
 
-        #region Notepad++
-        private void InstallNotepadPlusPlus_Click(object sender, EventArgs e)
+        #region MBSA
+        private void InstallMBSA_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco install notepadplusplus -y");
+            Process.Start(@"..\RandomTools\MBSASetup.msi");
         }
+        #endregion
 
-        private void UpdateNotepadPlusPlus_Click(object sender, EventArgs e)
+        #region CCleaner
+        private void InstallCCleaner_Click(object sender, EventArgs e)
         {
-            ExecCommand("choco upgrade notepadplusplus -y");
+            Process.Start(@"..\RandomTools\ccsetup.exe");
         }
         #endregion
         #endregion

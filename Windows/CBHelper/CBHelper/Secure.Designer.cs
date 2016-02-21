@@ -28,80 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InstallFirefox = new System.Windows.Forms.Button();
-            this.Chocolatey = new System.Windows.Forms.Button();
-            this.UpdateFirefox = new System.Windows.Forms.Button();
-            this.FirefoxLabel = new System.Windows.Forms.Label();
+            this.Install8Ninite = new System.Windows.Forms.Button();
+            this.InstallVistaServerNinite = new System.Windows.Forms.Button();
+            this.NiniteLabel = new System.Windows.Forms.Label();
             this.UserCommandsLabel = new System.Windows.Forms.Label();
             this.DisableGuest = new System.Windows.Forms.Button();
             this.UpdatePolicyLabel = new System.Windows.Forms.Label();
             this.EnableUpdates = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.InstallMalwarebytes = new System.Windows.Forms.Button();
-            this.MalwarebytesLabel = new System.Windows.Forms.Label();
+            this.InstallSearch = new System.Windows.Forms.Button();
+            this.SearchEverythingLabel = new System.Windows.Forms.Label();
             this.ConfigureFirewall = new System.Windows.Forms.Button();
             this.PasswordPolicy = new System.Windows.Forms.Button();
             this.PassReminder = new System.Windows.Forms.TextBox();
             this.SpybotLabel = new System.Windows.Forms.Label();
-            this.InstallSpybot = new System.Windows.Forms.Button();
+            this.InstallUnlocker = new System.Windows.Forms.Button();
             this.SetupAuditing = new System.Windows.Forms.Button();
             this.AuditList = new System.Windows.Forms.CheckedListBox();
             this.AuditReminder = new System.Windows.Forms.TextBox();
             this.ConsoleText = new System.Windows.Forms.TextBox();
             this.DiagHTML = new System.Windows.Forms.Button();
-            this.SysinternalsLabel = new System.Windows.Forms.Label();
-            this.InstallSysinternals = new System.Windows.Forms.Button();
-            this.NotepadPlusPlusLabel = new System.Windows.Forms.Label();
-            this.InstallNotepadPlusPlus = new System.Windows.Forms.Button();
-            this.UpdateNotepadPlusPlus = new System.Windows.Forms.Button();
+            this.MBSALabel = new System.Windows.Forms.Label();
+            this.InstallMBSA = new System.Windows.Forms.Button();
+            this.InstallCCleaner = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // InstallFirefox
+            // Install8Ninite
             // 
-            this.InstallFirefox.Location = new System.Drawing.Point(12, 138);
-            this.InstallFirefox.Name = "InstallFirefox";
-            this.InstallFirefox.Size = new System.Drawing.Size(128, 23);
-            this.InstallFirefox.TabIndex = 0;
-            this.InstallFirefox.Text = "Install Firefox";
-            this.InstallFirefox.UseVisualStyleBackColor = true;
-            this.InstallFirefox.Click += new System.EventHandler(this.InstallFirefox_Click);
+            this.Install8Ninite.Location = new System.Drawing.Point(17, 36);
+            this.Install8Ninite.Name = "Install8Ninite";
+            this.Install8Ninite.Size = new System.Drawing.Size(128, 23);
+            this.Install8Ninite.TabIndex = 0;
+            this.Install8Ninite.Text = "Run Win8 Ninite";
+            this.Install8Ninite.UseVisualStyleBackColor = true;
+            this.Install8Ninite.Click += new System.EventHandler(this.Install8Ninite_Click);
             // 
-            // Chocolatey
+            // InstallVistaServerNinite
             // 
-            this.Chocolatey.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Chocolatey.Location = new System.Drawing.Point(12, 12);
-            this.Chocolatey.Name = "Chocolatey";
-            this.Chocolatey.Size = new System.Drawing.Size(900, 57);
-            this.Chocolatey.TabIndex = 1;
-            this.Chocolatey.Text = "Install Chocolatey Package Manager for Windows";
-            this.Chocolatey.UseVisualStyleBackColor = true;
-            this.Chocolatey.Click += new System.EventHandler(this.Chocolatey_Click);
+            this.InstallVistaServerNinite.Location = new System.Drawing.Point(150, 36);
+            this.InstallVistaServerNinite.Name = "InstallVistaServerNinite";
+            this.InstallVistaServerNinite.Size = new System.Drawing.Size(128, 23);
+            this.InstallVistaServerNinite.TabIndex = 2;
+            this.InstallVistaServerNinite.Text = "Run VistaServer Ninite";
+            this.InstallVistaServerNinite.UseVisualStyleBackColor = true;
+            this.InstallVistaServerNinite.Click += new System.EventHandler(this.InstallVistaServerNinite_Click);
             // 
-            // UpdateFirefox
+            // NiniteLabel
             // 
-            this.UpdateFirefox.Location = new System.Drawing.Point(145, 138);
-            this.UpdateFirefox.Name = "UpdateFirefox";
-            this.UpdateFirefox.Size = new System.Drawing.Size(128, 23);
-            this.UpdateFirefox.TabIndex = 2;
-            this.UpdateFirefox.Text = "Update Firefox";
-            this.UpdateFirefox.UseVisualStyleBackColor = true;
-            this.UpdateFirefox.Click += new System.EventHandler(this.UpdateFirefox_Click);
-            // 
-            // FirefoxLabel
-            // 
-            this.FirefoxLabel.AutoSize = true;
-            this.FirefoxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirefoxLabel.Location = new System.Drawing.Point(111, 113);
-            this.FirefoxLabel.Name = "FirefoxLabel";
-            this.FirefoxLabel.Size = new System.Drawing.Size(65, 22);
-            this.FirefoxLabel.TabIndex = 3;
-            this.FirefoxLabel.Text = "Firefox";
+            this.NiniteLabel.AutoSize = true;
+            this.NiniteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NiniteLabel.Location = new System.Drawing.Point(102, 11);
+            this.NiniteLabel.Name = "NiniteLabel";
+            this.NiniteLabel.Size = new System.Drawing.Size(103, 22);
+            this.NiniteLabel.TabIndex = 3;
+            this.NiniteLabel.Text = "Run Ninites";
             // 
             // UserCommandsLabel
             // 
             this.UserCommandsLabel.AutoSize = true;
             this.UserCommandsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserCommandsLabel.Location = new System.Drawing.Point(707, 87);
+            this.UserCommandsLabel.Location = new System.Drawing.Point(707, 12);
             this.UserCommandsLabel.Name = "UserCommandsLabel";
             this.UserCommandsLabel.Size = new System.Drawing.Size(143, 22);
             this.UserCommandsLabel.TabIndex = 4;
@@ -109,7 +95,7 @@
             // 
             // DisableGuest
             // 
-            this.DisableGuest.Location = new System.Drawing.Point(711, 112);
+            this.DisableGuest.Location = new System.Drawing.Point(711, 37);
             this.DisableGuest.Name = "DisableGuest";
             this.DisableGuest.Size = new System.Drawing.Size(128, 23);
             this.DisableGuest.TabIndex = 5;
@@ -121,7 +107,7 @@
             // 
             this.UpdatePolicyLabel.AutoSize = true;
             this.UpdatePolicyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdatePolicyLabel.Location = new System.Drawing.Point(390, 87);
+            this.UpdatePolicyLabel.Location = new System.Drawing.Point(390, 12);
             this.UpdatePolicyLabel.Name = "UpdatePolicyLabel";
             this.UpdatePolicyLabel.Size = new System.Drawing.Size(165, 22);
             this.UpdatePolicyLabel.TabIndex = 6;
@@ -129,46 +115,36 @@
             // 
             // EnableUpdates
             // 
-            this.EnableUpdates.Location = new System.Drawing.Point(410, 112);
+            this.EnableUpdates.Location = new System.Drawing.Point(410, 37);
             this.EnableUpdates.Name = "EnableUpdates";
             this.EnableUpdates.Size = new System.Drawing.Size(128, 23);
             this.EnableUpdates.TabIndex = 7;
             this.EnableUpdates.Text = "Enable Auto Updating";
             this.EnableUpdates.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // InstallSearch
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 87);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "This column requires Chocolatey";
+            this.InstallSearch.Location = new System.Drawing.Point(17, 107);
+            this.InstallSearch.Name = "InstallSearch";
+            this.InstallSearch.Size = new System.Drawing.Size(261, 23);
+            this.InstallSearch.TabIndex = 9;
+            this.InstallSearch.Text = "Install Search Everything";
+            this.InstallSearch.UseVisualStyleBackColor = true;
+            this.InstallSearch.Click += new System.EventHandler(this.InstallSearch_Click);
             // 
-            // InstallMalwarebytes
+            // SearchEverythingLabel
             // 
-            this.InstallMalwarebytes.Location = new System.Drawing.Point(12, 209);
-            this.InstallMalwarebytes.Name = "InstallMalwarebytes";
-            this.InstallMalwarebytes.Size = new System.Drawing.Size(128, 23);
-            this.InstallMalwarebytes.TabIndex = 9;
-            this.InstallMalwarebytes.Text = "Install Malwarebytes";
-            this.InstallMalwarebytes.UseVisualStyleBackColor = true;
-            this.InstallMalwarebytes.Click += new System.EventHandler(this.InstallMalwarebytes_Click);
-            // 
-            // MalwarebytesLabel
-            // 
-            this.MalwarebytesLabel.AutoSize = true;
-            this.MalwarebytesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MalwarebytesLabel.Location = new System.Drawing.Point(83, 184);
-            this.MalwarebytesLabel.Name = "MalwarebytesLabel";
-            this.MalwarebytesLabel.Size = new System.Drawing.Size(120, 22);
-            this.MalwarebytesLabel.TabIndex = 10;
-            this.MalwarebytesLabel.Text = "Malwarebytes";
+            this.SearchEverythingLabel.AutoSize = true;
+            this.SearchEverythingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchEverythingLabel.Location = new System.Drawing.Point(68, 82);
+            this.SearchEverythingLabel.Name = "SearchEverythingLabel";
+            this.SearchEverythingLabel.Size = new System.Drawing.Size(157, 22);
+            this.SearchEverythingLabel.TabIndex = 10;
+            this.SearchEverythingLabel.Text = "Search Everything";
             // 
             // ConfigureFirewall
             // 
-            this.ConfigureFirewall.Location = new System.Drawing.Point(410, 163);
+            this.ConfigureFirewall.Location = new System.Drawing.Point(410, 88);
             this.ConfigureFirewall.Name = "ConfigureFirewall";
             this.ConfigureFirewall.Size = new System.Drawing.Size(128, 23);
             this.ConfigureFirewall.TabIndex = 11;
@@ -178,7 +154,7 @@
             // 
             // PasswordPolicy
             // 
-            this.PasswordPolicy.Location = new System.Drawing.Point(711, 162);
+            this.PasswordPolicy.Location = new System.Drawing.Point(711, 87);
             this.PasswordPolicy.Name = "PasswordPolicy";
             this.PasswordPolicy.Size = new System.Drawing.Size(128, 23);
             this.PasswordPolicy.TabIndex = 12;
@@ -188,7 +164,7 @@
             // 
             // PassReminder
             // 
-            this.PassReminder.Location = new System.Drawing.Point(678, 191);
+            this.PassReminder.Location = new System.Drawing.Point(678, 116);
             this.PassReminder.Multiline = true;
             this.PassReminder.Name = "PassReminder";
             this.PassReminder.Size = new System.Drawing.Size(199, 63);
@@ -200,25 +176,25 @@
             // 
             this.SpybotLabel.AutoSize = true;
             this.SpybotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SpybotLabel.Location = new System.Drawing.Point(21, 263);
+            this.SpybotLabel.Location = new System.Drawing.Point(102, 161);
             this.SpybotLabel.Name = "SpybotLabel";
-            this.SpybotLabel.Size = new System.Drawing.Size(241, 22);
+            this.SpybotLabel.Size = new System.Drawing.Size(81, 22);
             this.SpybotLabel.TabIndex = 14;
-            this.SpybotLabel.Text = "Spybot - Search and Destroy";
+            this.SpybotLabel.Text = "Unlocker";
             // 
-            // InstallSpybot
+            // InstallUnlocker
             // 
-            this.InstallSpybot.Location = new System.Drawing.Point(12, 288);
-            this.InstallSpybot.Name = "InstallSpybot";
-            this.InstallSpybot.Size = new System.Drawing.Size(128, 23);
-            this.InstallSpybot.TabIndex = 15;
-            this.InstallSpybot.Text = "Install Spybot";
-            this.InstallSpybot.UseVisualStyleBackColor = true;
-            this.InstallSpybot.Click += new System.EventHandler(this.InstallSpybot_Click);
+            this.InstallUnlocker.Location = new System.Drawing.Point(17, 186);
+            this.InstallUnlocker.Name = "InstallUnlocker";
+            this.InstallUnlocker.Size = new System.Drawing.Size(261, 23);
+            this.InstallUnlocker.TabIndex = 15;
+            this.InstallUnlocker.Text = "Install Unlocker";
+            this.InstallUnlocker.UseVisualStyleBackColor = true;
+            this.InstallUnlocker.Click += new System.EventHandler(this.InstallUnlocker_Click);
             // 
             // SetupAuditing
             // 
-            this.SetupAuditing.Location = new System.Drawing.Point(410, 208);
+            this.SetupAuditing.Location = new System.Drawing.Point(410, 133);
             this.SetupAuditing.Name = "SetupAuditing";
             this.SetupAuditing.Size = new System.Drawing.Size(128, 23);
             this.SetupAuditing.TabIndex = 16;
@@ -239,14 +215,14 @@
             "PolicyChange",
             "PrivilegeUse",
             "System"});
-            this.AuditList.Location = new System.Drawing.Point(410, 288);
+            this.AuditList.Location = new System.Drawing.Point(410, 213);
             this.AuditList.Name = "AuditList";
             this.AuditList.Size = new System.Drawing.Size(128, 139);
             this.AuditList.TabIndex = 17;
             // 
             // AuditReminder
             // 
-            this.AuditReminder.Location = new System.Drawing.Point(374, 433);
+            this.AuditReminder.Location = new System.Drawing.Point(374, 358);
             this.AuditReminder.Multiline = true;
             this.AuditReminder.Name = "AuditReminder";
             this.AuditReminder.Size = new System.Drawing.Size(199, 63);
@@ -258,15 +234,15 @@
             // 
             this.ConsoleText.BackColor = System.Drawing.SystemColors.InfoText;
             this.ConsoleText.ForeColor = System.Drawing.Color.LimeGreen;
-            this.ConsoleText.Location = new System.Drawing.Point(12, 514);
+            this.ConsoleText.Location = new System.Drawing.Point(12, 427);
             this.ConsoleText.Multiline = true;
             this.ConsoleText.Name = "ConsoleText";
-            this.ConsoleText.Size = new System.Drawing.Size(900, 181);
+            this.ConsoleText.Size = new System.Drawing.Size(900, 268);
             this.ConsoleText.TabIndex = 18;
             // 
             // DiagHTML
             // 
-            this.DiagHTML.Location = new System.Drawing.Point(711, 288);
+            this.DiagHTML.Location = new System.Drawing.Point(711, 213);
             this.DiagHTML.Name = "DiagHTML";
             this.DiagHTML.Size = new System.Drawing.Size(128, 23);
             this.DiagHTML.TabIndex = 19;
@@ -274,55 +250,45 @@
             this.DiagHTML.UseVisualStyleBackColor = true;
             this.DiagHTML.Click += new System.EventHandler(this.DiagHTML_Click);
             // 
-            // SysinternalsLabel
+            // MBSALabel
             // 
-            this.SysinternalsLabel.AutoSize = true;
-            this.SysinternalsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SysinternalsLabel.Location = new System.Drawing.Point(83, 340);
-            this.SysinternalsLabel.Name = "SysinternalsLabel";
-            this.SysinternalsLabel.Size = new System.Drawing.Size(108, 22);
-            this.SysinternalsLabel.TabIndex = 20;
-            this.SysinternalsLabel.Text = "Sysinternals";
+            this.MBSALabel.AutoSize = true;
+            this.MBSALabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MBSALabel.Location = new System.Drawing.Point(114, 238);
+            this.MBSALabel.Name = "MBSALabel";
+            this.MBSALabel.Size = new System.Drawing.Size(60, 22);
+            this.MBSALabel.TabIndex = 20;
+            this.MBSALabel.Text = "MBSA";
             // 
-            // InstallSysinternals
+            // InstallMBSA
             // 
-            this.InstallSysinternals.Location = new System.Drawing.Point(12, 365);
-            this.InstallSysinternals.Name = "InstallSysinternals";
-            this.InstallSysinternals.Size = new System.Drawing.Size(128, 23);
-            this.InstallSysinternals.TabIndex = 21;
-            this.InstallSysinternals.Text = "Install Sysinternals";
-            this.InstallSysinternals.UseVisualStyleBackColor = true;
-            this.InstallSysinternals.Click += new System.EventHandler(this.InstallSysinternals_Click);
+            this.InstallMBSA.Location = new System.Drawing.Point(17, 263);
+            this.InstallMBSA.Name = "InstallMBSA";
+            this.InstallMBSA.Size = new System.Drawing.Size(261, 23);
+            this.InstallMBSA.TabIndex = 21;
+            this.InstallMBSA.Text = "Install MBSA";
+            this.InstallMBSA.UseVisualStyleBackColor = true;
+            this.InstallMBSA.Click += new System.EventHandler(this.InstallMBSA_Click);
             // 
-            // NotepadPlusPlusLabel
+            // InstallCCleaner
             // 
-            this.NotepadPlusPlusLabel.AutoSize = true;
-            this.NotepadPlusPlusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotepadPlusPlusLabel.Location = new System.Drawing.Point(83, 415);
-            this.NotepadPlusPlusLabel.Name = "NotepadPlusPlusLabel";
-            this.NotepadPlusPlusLabel.Size = new System.Drawing.Size(100, 22);
-            this.NotepadPlusPlusLabel.TabIndex = 22;
-            this.NotepadPlusPlusLabel.Text = "Notepad++";
+            this.InstallCCleaner.Location = new System.Drawing.Point(17, 341);
+            this.InstallCCleaner.Name = "InstallCCleaner";
+            this.InstallCCleaner.Size = new System.Drawing.Size(261, 23);
+            this.InstallCCleaner.TabIndex = 23;
+            this.InstallCCleaner.Text = "Install CCleaner";
+            this.InstallCCleaner.UseVisualStyleBackColor = true;
+            this.InstallCCleaner.Click += new System.EventHandler(this.InstallCCleaner_Click);
             // 
-            // InstallNotepadPlusPlus
+            // label1
             // 
-            this.InstallNotepadPlusPlus.Location = new System.Drawing.Point(12, 440);
-            this.InstallNotepadPlusPlus.Name = "InstallNotepadPlusPlus";
-            this.InstallNotepadPlusPlus.Size = new System.Drawing.Size(128, 23);
-            this.InstallNotepadPlusPlus.TabIndex = 23;
-            this.InstallNotepadPlusPlus.Text = "Install Notepad++";
-            this.InstallNotepadPlusPlus.UseVisualStyleBackColor = true;
-            this.InstallNotepadPlusPlus.Click += new System.EventHandler(this.InstallNotepadPlusPlus_Click);
-            // 
-            // UpdateNotepadPlusPlus
-            // 
-            this.UpdateNotepadPlusPlus.Location = new System.Drawing.Point(145, 440);
-            this.UpdateNotepadPlusPlus.Name = "UpdateNotepadPlusPlus";
-            this.UpdateNotepadPlusPlus.Size = new System.Drawing.Size(128, 23);
-            this.UpdateNotepadPlusPlus.TabIndex = 24;
-            this.UpdateNotepadPlusPlus.Text = "Update Notepad++";
-            this.UpdateNotepadPlusPlus.UseVisualStyleBackColor = true;
-            this.UpdateNotepadPlusPlus.Click += new System.EventHandler(this.UpdateNotepadPlusPlus_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(102, 316);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 22);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "CCleaner";
             // 
             // Secure
             // 
@@ -331,32 +297,29 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(924, 707);
-            this.Controls.Add(this.UpdateNotepadPlusPlus);
-            this.Controls.Add(this.InstallNotepadPlusPlus);
-            this.Controls.Add(this.NotepadPlusPlusLabel);
-            this.Controls.Add(this.InstallSysinternals);
-            this.Controls.Add(this.SysinternalsLabel);
+            this.Controls.Add(this.InstallCCleaner);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.InstallMBSA);
+            this.Controls.Add(this.MBSALabel);
             this.Controls.Add(this.DiagHTML);
             this.Controls.Add(this.ConsoleText);
             this.Controls.Add(this.AuditList);
             this.Controls.Add(this.SetupAuditing);
-            this.Controls.Add(this.InstallSpybot);
+            this.Controls.Add(this.InstallUnlocker);
             this.Controls.Add(this.SpybotLabel);
             this.Controls.Add(this.AuditReminder);
             this.Controls.Add(this.PassReminder);
             this.Controls.Add(this.PasswordPolicy);
             this.Controls.Add(this.ConfigureFirewall);
-            this.Controls.Add(this.MalwarebytesLabel);
-            this.Controls.Add(this.InstallMalwarebytes);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SearchEverythingLabel);
+            this.Controls.Add(this.InstallSearch);
             this.Controls.Add(this.EnableUpdates);
             this.Controls.Add(this.UpdatePolicyLabel);
             this.Controls.Add(this.DisableGuest);
             this.Controls.Add(this.UserCommandsLabel);
-            this.Controls.Add(this.FirefoxLabel);
-            this.Controls.Add(this.UpdateFirefox);
-            this.Controls.Add(this.Chocolatey);
-            this.Controls.Add(this.InstallFirefox);
+            this.Controls.Add(this.NiniteLabel);
+            this.Controls.Add(this.InstallVistaServerNinite);
+            this.Controls.Add(this.Install8Ninite);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(940, 746);
@@ -372,32 +335,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Button InstallFirefox;
-        private System.Windows.Forms.Button Chocolatey;
-        private System.Windows.Forms.Button UpdateFirefox;
-        private System.Windows.Forms.Label FirefoxLabel;
+        private System.Windows.Forms.Button Install8Ninite;
+        private System.Windows.Forms.Button InstallVistaServerNinite;
+        private System.Windows.Forms.Label NiniteLabel;
         private System.Windows.Forms.Label UserCommandsLabel;
         private System.Windows.Forms.Button DisableGuest;
         private System.Windows.Forms.Label UpdatePolicyLabel;
         private System.Windows.Forms.Button EnableUpdates;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button InstallMalwarebytes;
-        private System.Windows.Forms.Label MalwarebytesLabel;
+        private System.Windows.Forms.Button InstallSearch;
+        private System.Windows.Forms.Label SearchEverythingLabel;
         private System.Windows.Forms.Button ConfigureFirewall;
         private System.Windows.Forms.Button PasswordPolicy;
         private System.Windows.Forms.TextBox PassReminder;
         private System.Windows.Forms.Label SpybotLabel;
-        private System.Windows.Forms.Button InstallSpybot;
+        private System.Windows.Forms.Button InstallUnlocker;
         private System.Windows.Forms.Button SetupAuditing;
         private System.Windows.Forms.CheckedListBox AuditList;
         private System.Windows.Forms.TextBox AuditReminder;
         private System.Windows.Forms.TextBox ConsoleText;
         private System.Windows.Forms.Button DiagHTML;
-        private System.Windows.Forms.Label SysinternalsLabel;
-        private System.Windows.Forms.Button InstallSysinternals;
-        private System.Windows.Forms.Label NotepadPlusPlusLabel;
-        private System.Windows.Forms.Button InstallNotepadPlusPlus;
-        private System.Windows.Forms.Button UpdateNotepadPlusPlus;
+        private System.Windows.Forms.Label MBSALabel;
+        private System.Windows.Forms.Button InstallMBSA;
+        private System.Windows.Forms.Button InstallCCleaner;
+        private System.Windows.Forms.Label label1;
     }
 }
 
