@@ -7,6 +7,7 @@ using NetFwTypeLib;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace CBHelper
 {
@@ -28,7 +29,8 @@ namespace CBHelper
 
         private void Chocolatey_Click(object sender, EventArgs e)
         {
-            exec_cmd("@powershell -NoProfile -ExecutionPolicy Bypass -Command \"iex((new- object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))\" && SET PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\bin");
+            ExecCommand("powershell \"Set-ExecutionPolicy AllSigned\"");
+            ExecCommand(@"@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin");
         }
 
         private void DiagHTML_Click(object sender, EventArgs e)
@@ -96,45 +98,45 @@ namespace CBHelper
         #region Firefox
         private void InstallFirefox_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install firefox -y");
+            ExecCommand("choco install firefox -y");
         }
 
         private void UpdateFirefox_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco upgrade firefox -y");
+            ExecCommand("choco upgrade firefox -y");
         }
         #endregion
 
         #region Malwarebytes
         private void InstallMalwarebytes_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install malwarebytes -y");
+            ExecCommand("choco install malwarebytes -y");
         }
         #endregion
 
         #region Spybot - Search and Destroy
         private void InstallSpybot_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install spybot -y");
+            ExecCommand("choco install spybot -y");
         }
         #endregion
 
         #region Sysinternals
         private void InstallSysinternals_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install sysinternals -y");
+            ExecCommand("choco install sysinternals -y");
         }
         #endregion
 
         #region Notepad++
         private void InstallNotepadPlusPlus_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco install notepadplusplus -y");
+            ExecCommand("choco install notepadplusplus -y");
         }
 
         private void UpdateNotepadPlusPlus_Click(object sender, EventArgs e)
         {
-            exec_cmd("choco upgrade notepadplusplus -y");
+            ExecCommand("choco upgrade notepadplusplus -y");
         }
         #endregion
         #endregion
@@ -142,12 +144,12 @@ namespace CBHelper
         #region User Commands
         private void DisableGuest_Click(object sender, EventArgs e)
         {
-            exec_cmd("net user Guest /active:no");
+            ExecCommand("net user Guest /active:no");
         }
 
         private void PasswordPolicy_Click(object sender, EventArgs e)
         {
-            exec_cmd("net accounts /lockoutthreshold:5 && net accounts /MINPWLEN:12 /MAXPWAGE:30 /UNIQUEPW:3 && @powershell Start-process secpol.msc");
+            ExecCommand("net accounts /lockoutthreshold:5 && net accounts /MINPWLEN:12 /MAXPWAGE:30 /UNIQUEPW:3 && @powershell Start-process secpol.msc");
         }
         #endregion
 
@@ -159,7 +161,7 @@ namespace CBHelper
             if (!auc.Settings.ReadOnly)
                 auc.Settings.Save();
 
-            exec_cmd("control update");
+            ExecCommand("control update");
         }
 
         private void ConfigureFirewall_Click(object sender, EventArgs e)
@@ -185,7 +187,7 @@ namespace CBHelper
             object[] items = AuditList.CheckedItems.OfType<object>().ToArray();
             foreach (string item in items)
             {
-                exec_cmd("auditpol.exe /set /category:" + item + " /failure:enable");
+                ExecCommand("auditpol.exe /set /category:" + item + " /failure:enable /success:enable");
             }
         }
         #endregion
@@ -194,7 +196,7 @@ namespace CBHelper
         /// Execute a command in Command Prompt.
         /// </summary>
         /// <param name="arguments">Command to run.</param>
-        private void exec_cmd(string arguments)
+        private void ExecCommand(string arguments)
         {
             var proc1 = new ProcessStartInfo();
             Process p = new Process();
@@ -211,31 +213,6 @@ namespace CBHelper
             string consoleOutput = p.StandardOutput.ReadToEnd();
             Console.Write(consoleOutput);
             p.WaitForExit();
-        }
-
-        /// <summary>
-        /// Searches for media files in the Users directory. Currently fails because of permission errors.
-        /// </summary>
-        /// <param name="path">Where to search for files.</param>
-        /// <param name="filetype">Filetype to search for.</param>
-        /// <returns>String of files found</returns>
-        IEnumerable<String> GetAllFiles(string path, string filetype)
-        {
-            //return System.IO.Directory.EnumerateFiles(path, filetype).Union(
-            //    System.IO.Directory.EnumerateDirectories(path).SelectMany(d =>
-            //    {
-            //        try
-            //        {
-            //            return GetAllFiles(d, filetype);
-            //        }
-            //        catch (UnauthorizedAccessException e)
-            //        {
-            //            //Process.Start(string.Format("http://stackoverflow.com/search?q=%5Bc%23%5D%20{0}", Uri.EscapeUriString(e.Message)));
-            //            Console.WriteLine(e.Message);
-            //            return Enumerable.Empty<String>();
-            //        }
-            //    }));String.Join(String.Empty, GetAllFiles(@"C:\Users\", "jpg").ToArray())
-            return Enumerable.Empty<string>();
         }
     }
 }

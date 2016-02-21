@@ -230,14 +230,14 @@
             // 
             this.AuditList.FormattingEnabled = true;
             this.AuditList.Items.AddRange(new object[] {
-            "Account Logon",
-            "Account Management",
-            "Detailed Tracking",
-            "DS Access",
+            "AccountLogon",
+            "AccountManagement",
+            "DetailedTracking",
+            "DSAccess",
             "Logon/Logoff",
-            "Object Access",
-            "Policy Change",
-            "Privilege Use",
+            "ObjectAccess",
+            "PolicyChange",
+            "PrivilegeUse",
             "System"});
             this.AuditList.Location = new System.Drawing.Point(410, 288);
             this.AuditList.Name = "AuditList";
