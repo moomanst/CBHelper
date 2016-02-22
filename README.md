@@ -1,3 +1,5 @@
+Fun fact: "CBHelper" is actually a mistype that I didn't notice until this commit. It was supposed to be "CPHelper". Oh well, I'm not gonna fix.
+
 # CBHelper Ubuntu
 Shell script to do CyberPatriot Ubuntu tasks.
 
