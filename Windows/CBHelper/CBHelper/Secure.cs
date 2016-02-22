@@ -25,6 +25,7 @@ namespace CBHelper
             Console.SetOut(writer);
         }
 
+        // Basically completely pointless and inefficient, but I decided "I can do this... I should do this."
         private void DiagHTML_Click(object sender, EventArgs e)
         {
             string path = @"HTMLDiag.html";
@@ -86,61 +87,77 @@ namespace CBHelper
             }
         }
 
+        // These buttons used to do something else,
+        // but that other thing was stupid.
+        // So now they run executables, because it was more work to remove them than reuse them.
         #region Installs
         #region Ninite
         private void Install8Ninite_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\Ninite8.exe");
+            Process.Start(@"RandomTools\Ninite8.exe");
         }
 
-        private void InstallVistaServerNinite_Click(object sender, EventArgs e)
+        private void InstallNon8Ninite_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\NiniteServer.exe");
+            Process.Start(@"RandomTools\NiniteServer.exe");
         }
         #endregion
 
         #region Search Everything
         private void InstallSearch_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\EverythingSetup.exe");
+            Process.Start(@"RandomTools\EverythingSetup.exe");
         }
         #endregion
 
         #region Unlocker
         private void InstallUnlocker_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\Unlocker.exe");
+            Process.Start(@"RandomTools\Unlocker.exe");
         }
         #endregion
 
         #region MBSA
         private void InstallMBSA_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\MBSASetup.msi");
+            Process.Start(@"RandomTools\MBSASetup.msi");
         }
         #endregion
 
         #region CCleaner
         private void InstallCCleaner_Click(object sender, EventArgs e)
         {
-            Process.Start(@"..\RandomTools\ccsetup.exe");
+            Process.Start(@"RandomTools\ccsetup.exe");
         }
         #endregion
         #endregion
 
+        // These are cool
         #region User Commands
+        // Disables guest account, if it is enabled
         private void DisableGuest_Click(object sender, EventArgs e)
         {
             ExecCommand("net user Guest /active:no");
         }
-
+        
+        // Set password policy to:
+        // Three login attempts
+        // Minimum length of 12
+        // Max age until required reset of 60
+        // Min age until resetable to 30
+        // Have to go 3 passwords until an old one can be reused
         private void PasswordPolicy_Click(object sender, EventArgs e)
         {
-            ExecCommand("net accounts /lockoutthreshold:5 && net accounts /MINPWLEN:12 /MAXPWAGE:30 /UNIQUEPW:3 && @powershell Start-process secpol.msc");
+            ExecCommand("net accounts /lockoutthreshold:3 && net accounts /MINPWLEN:12 /MAXPWAGE:60 /MINPWAGE:30 /UNIQUEPW:3 && @powershell Start-process secpol.msc");
         }
         #endregion
 
+        // Also pretty cool. Wish I could do more with them.
+        // Probably can, actually.
         #region Updates and Policy
+        // Set updates to:
+        // Download updates automatically
+        // Notify before installing them
         private void EnableUpdates_Click(object sender, EventArgs e)
         {
             AutomaticUpdates auc = new AutomaticUpdates();
@@ -149,8 +166,10 @@ namespace CBHelper
                 auc.Settings.Save();
 
             ExecCommand("control update");
+            Console.WriteLine("Set successfully");
         }
 
+        // Turns the firewall on.
         private void ConfigureFirewall_Click(object sender, EventArgs e)
         {
             Type NetFwMgrType = Type.GetTypeFromProgID("HNetCfg.FwMgr", false);

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Install8Ninite = new System.Windows.Forms.Button();
-            this.InstallVistaServerNinite = new System.Windows.Forms.Button();
+            this.InstallNon8Ninite = new System.Windows.Forms.Button();
             this.NiniteLabel = new System.Windows.Forms.Label();
             this.UserCommandsLabel = new System.Windows.Forms.Label();
             this.DisableGuest = new System.Windows.Forms.Button();
@@ -63,15 +63,15 @@
             this.Install8Ninite.UseVisualStyleBackColor = true;
             this.Install8Ninite.Click += new System.EventHandler(this.Install8Ninite_Click);
             // 
-            // InstallVistaServerNinite
+            // InstallNon8Ninite
             // 
-            this.InstallVistaServerNinite.Location = new System.Drawing.Point(150, 36);
-            this.InstallVistaServerNinite.Name = "InstallVistaServerNinite";
-            this.InstallVistaServerNinite.Size = new System.Drawing.Size(128, 23);
-            this.InstallVistaServerNinite.TabIndex = 2;
-            this.InstallVistaServerNinite.Text = "Run VistaServer Ninite";
-            this.InstallVistaServerNinite.UseVisualStyleBackColor = true;
-            this.InstallVistaServerNinite.Click += new System.EventHandler(this.InstallVistaServerNinite_Click);
+            this.InstallNon8Ninite.Location = new System.Drawing.Point(150, 36);
+            this.InstallNon8Ninite.Name = "InstallNon8Ninite";
+            this.InstallNon8Ninite.Size = new System.Drawing.Size(128, 23);
+            this.InstallNon8Ninite.TabIndex = 2;
+            this.InstallNon8Ninite.Text = "Run Non8 Ninite";
+            this.InstallNon8Ninite.UseVisualStyleBackColor = true;
+            this.InstallNon8Ninite.Click += new System.EventHandler(this.InstallNon8Ninite_Click);
             // 
             // NiniteLabel
             // 
@@ -188,7 +188,7 @@
             this.InstallUnlocker.Name = "InstallUnlocker";
             this.InstallUnlocker.Size = new System.Drawing.Size(261, 23);
             this.InstallUnlocker.TabIndex = 15;
-            this.InstallUnlocker.Text = "Install Unlocker";
+            this.InstallUnlocker.Text = "Install Unlocker (careful, installer has AIDS)";
             this.InstallUnlocker.UseVisualStyleBackColor = true;
             this.InstallUnlocker.Click += new System.EventHandler(this.InstallUnlocker_Click);
             // 
@@ -215,14 +215,14 @@
             "PolicyChange",
             "PrivilegeUse",
             "System"});
-            this.AuditList.Location = new System.Drawing.Point(410, 213);
+            this.AuditList.Location = new System.Drawing.Point(410, 168);
             this.AuditList.Name = "AuditList";
             this.AuditList.Size = new System.Drawing.Size(128, 139);
             this.AuditList.TabIndex = 17;
             // 
             // AuditReminder
             // 
-            this.AuditReminder.Location = new System.Drawing.Point(374, 358);
+            this.AuditReminder.Location = new System.Drawing.Point(375, 318);
             this.AuditReminder.Multiline = true;
             this.AuditReminder.Name = "AuditReminder";
             this.AuditReminder.Size = new System.Drawing.Size(199, 63);
@@ -234,10 +234,10 @@
             // 
             this.ConsoleText.BackColor = System.Drawing.SystemColors.InfoText;
             this.ConsoleText.ForeColor = System.Drawing.Color.LimeGreen;
-            this.ConsoleText.Location = new System.Drawing.Point(12, 427);
+            this.ConsoleText.Location = new System.Drawing.Point(12, 387);
             this.ConsoleText.Multiline = true;
             this.ConsoleText.Name = "ConsoleText";
-            this.ConsoleText.Size = new System.Drawing.Size(900, 268);
+            this.ConsoleText.Size = new System.Drawing.Size(900, 308);
             this.ConsoleText.TabIndex = 18;
             // 
             // DiagHTML
@@ -318,7 +318,7 @@
             this.Controls.Add(this.DisableGuest);
             this.Controls.Add(this.UserCommandsLabel);
             this.Controls.Add(this.NiniteLabel);
-            this.Controls.Add(this.InstallVistaServerNinite);
+            this.Controls.Add(this.InstallNon8Ninite);
             this.Controls.Add(this.Install8Ninite);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -336,7 +336,7 @@
         #endregion
 
         private System.Windows.Forms.Button Install8Ninite;
-        private System.Windows.Forms.Button InstallVistaServerNinite;
+        private System.Windows.Forms.Button InstallNon8Ninite;
         private System.Windows.Forms.Label NiniteLabel;
         private System.Windows.Forms.Label UserCommandsLabel;
         private System.Windows.Forms.Button DisableGuest;
